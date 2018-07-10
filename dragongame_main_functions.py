@@ -1,6 +1,7 @@
-# Dragon game
+# Dragon game Main functions
 
-# Main functions
+from dragongame_classes_instances import *
+
 def show_rules():
     """Show the rules to the player"""
     file = open("Rules.txt","r")
@@ -69,6 +70,8 @@ def createNewPlayer ():
 	return(NewPlayer)
 	
 def chooseOpponent():
+
+	print("Choosing your next victim...\n")
 	allDragons = [easyDragon1,easyDragon2,mediumDragon3,mediumDragon1,mediumDragon2,hardDragon1,hardDragon2,hardDragon3,secretDragon]
 	
 	newOpponent = [ allDragons[i] for i in sorted(random.sample(xrange(len(allDragons)), 1)) ]
