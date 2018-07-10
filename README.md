@@ -2,6 +2,6 @@
 
 A game to kill a dragon, in Python 3 - UNDER IMPLEMENTATION
 
-# creator
+# creators
 Rodrigo Araújo e Castro
-
+Paulo Belato
