@@ -18,7 +18,7 @@ class Dragon:
             print("\nImpossible to cut an ethereal head, try something else.")
             return False
         elif dmg >= self.heads:
-            dmg == self.heads
+            dmg = self.heads
 
         if dmg == 1:
             print("\nOne head was cut, but another grew in its place")
@@ -34,7 +34,7 @@ class Dragon:
             print("\nImpossible to cut an ethereal tail, try something else.")
             return False
         elif dmg >= self.tails:
-            dmg == self.tails
+            dmg = self.tails
 
         if dmg == 1:
             self.tails += 1
@@ -55,8 +55,8 @@ class Player:
         self.bagType = bagType
         self.gender = gender
     
-    def change_weapon (self, newWeapon):
-            if newWeapon is not initialWeapon:
+    def change_weapon (self, actualWeapon, newWeapon):
+            if newWeapon is not actualWeapon:
                 self.weapon = newWeapon
             else:
                 print ("It is not worth changing your current weapon for the same type. Try another, pall.")

@@ -2,6 +2,7 @@
 
 from dragongame_classes_instances import *
 import random
+import collections
 
 def show_rules():
     """Show the rules to the player"""
@@ -72,30 +73,18 @@ def createNewPlayer ():
 
         return(newPlayer)
 
-    def printPlayerInfo(newPlayer):
+def printPlayerInfo(newPlayer):
 
-        print("Your personal info:")
-        print("Your name is %s." % newPlayer[0].name)
-        print("Your initial weapon is %s." % newPlayer[0].weapon)
-        print("Your home is %s." % newPlayer[0].home)
-        print("You carry your stuff in a %s." % newPlayer[0].bagType)
-        print("You are %s." % newPlayer[0].gender)
+    print("Your personal info:")
+    print("Your name is %s." % newPlayer[0].name)
+    print("Your initial weapon is %s." % newPlayer[0].weapon)
+    print("Your home is %s." % newPlayer[0].home)
+    print("You carry your stuff in a %s." % newPlayer[0].bagType)
+    print("You are %s." % newPlayer[0].gender)
     
-#def chooseOpponent():
-#
-#    print("Choosing your next victim...\n")
-#    allDragons = [easyDragon1,easyDragon2,mediumDragon3,mediumDragon1,mediumDragon2,hardDragon1,hardDragon2,hardDragon3,secretDragon]
-#    
-#    newOpponent = [ allDragons[i] for i in sorted(random.sample(xrange(len(allDragons)), 1)) ]
-#    
-#    return(newOpponent)
 
-# HELP WANTED
-def chooseOpponent(oldOpponent=None,status="alive"):
+def chooseOpponent():
     
-    #allDragons = [easyDragon1,easyDragon2,mediumDragon1,mediumDragon2,hardDragon1,hardDragon2,hardDragon3,secretDragon]
-    #status = ["alive","alive","alive","alive","alive","alive","alive","alive"]
-
     #dragon_lives = {easyDragon1,"alive",easyDragon2,"alive",mediumDragon1,"alive",
     #                mediumDragon2,"alive",hardDragon1,hardDragon2,"alive",
     #                hardDragon3,"alive",secretDragon,"alive"}
@@ -107,73 +96,67 @@ def chooseOpponent(oldOpponent=None,status="alive"):
                     hardDragon1.name,hardDragon2.name,hardDragon3.name,secretDragon.name]
     
     dragon_status=["alive","alive","alive","alive","alive","alive","alive","alive"]
-    dragon_status2=["dead","alive","alive","alive","alive","alive","alive","alive"]
 
-    
-    dragon_lives = dict(zip(allDragonNames, dragon_status)) # keys, values
-    dragon_lives2 = dict(zip(allDragonNames, dragon_status2)) # keys, values
+    # produces dictionaries with dragons' lives info
+    dragon_lives = collections.OrderedDict(zip(allDragonNames, dragon_status)) # keys, values
 
     # print dict of dragon names and lives
     for key, value in dragon_lives.items() :
         print (key, value)
 
+    # print all stats from the dragons
+    print("name", "element", "home", "heads", "tails")
+    for item in range(1,len(allDragons)):
+        print(allDragons[item].name,allDragons[item].element,
+              allDragons[item].home,allDragons[item].heads,allDragons[item].tails)
+
+    print("Choosing your next victim (or killer)...\n")
+
     # choosing new opponent
+    newOpponent = ""
 
-    drag_range = range(1,len(dragon_lives.values() ))
-    #for drag in dragon_lives:
-    for drag,inds in dragon_lives.keys(), drag_range:
+    # number of the dragon
+    drag_num = 0
+
+    # if the dragon is alive, choose it to fight with, otherwise skip it
+    for drag in allDragonNames:
         if dragon_lives[drag] == "alive":
-            newOpponent = allDragons[inds]
+            newOpponent = allDragons[drag_num]
+            drag_num += 1
+            break
         elif dragon_lives[drag] == "dead":
-            if drag == len(dragon_lives.values())-1: # if it is the last dragon
+            if drag_num == len(allDragonNames)-1: # if it is the last dragon
                 print("Congratulations, you have killed all the dragons! Take your prize asap or it will disappear!")
+                break
             else:
+                drag_num += 1
                 pass
-        
-    
-    print("Choosing your next victim...\n")
-    allDragons = [easyDragon1,easyDragon2,mediumDragon1,mediumDragon2,hardDragon1,hardDragon2,hardDragon3,secretDragon]
-    easyDragons = [easyDragon1,easyDragon2]
-    mediumDragons = [mediumDragon1,mediumDragon2]
-    hardDragons = [hardDragon1,hardDragon2,hardDragon3]
-    #secretDragon
 
-    #newOpponent = [ allDragons[i] for i in sorted(random.sample(xrange(len(allDragons)), 1)) ]
-    
+    print("Your next opponent is %s" %newOpponent.name)
     return(newOpponent)
     
     
-    
-"""
-# new Players
-""""Player class""""
-    
-Weakwarrior = Player("Steve", "Short sword", "Small village", "Bag", "male")
-BravePrincess = Player("Zelda", "Short sword", "Small village", "Rucksack", "male")
-FashionHero = Player("Susie", "Deadly lipstick", "Hollywood", "Handbag", "female")
-YoungCharlatan = Player("Lockheart", "Wand", "Big city", "Rucksack", "male")
-PreyingPriest = Player("John", "Staff", "Royal capital", "Bag", "male")
-BoldCoward =  Player("Aussie", "Boomerang", "Scorching desert", "Rucksack", "female")
-        
-        
-# new Dragons:
-    """"Dragon class""""
-        
-easyDragon1 = Dragon("Bob","Fire","Volcan", heads=3,tails=3)    
-easyDragon2 = Dragon("Gill","Water", "Lake", heads=4,tails=4)
-
-mediumDragon1 = Dragon("Lady","Fire","Desert", heads=5,tails=5)
-mediumDragon2 = Dragon("Sechs","Lightning", "Cave", heads=6,tails=6)
-
-hardDragon1 = Dragon("Monk","Water", "Shaolin Temple", heads=7,tails=7)
-hardDragon2 = Dragon("Tomb","Earth", "Cemetery", "heads=8,tails=8)
-hardDragon3 = Dragon("Frosty","Ice","Glaciers",heads=8,tails=8)
-
-secretDragon = Dragon("Chuck Norris","All elements", "Moon", heads=10,tails=15)
-"""
-
-
 def player_action(choice, dragon):
+    if choice == '1':
+        dragon.cut_head(1)
+        check_dragon(dragon)
+        check_game_over(dragon)
+    elif choice == '2':
+        dragon.cut_head(2)
+        check_dragon(dragon)
+        check_game_over(dragon)
+    elif choice == '3':
+        dragon.cut_tail(1)
+        check_dragon(dragon)
+        check_game_over(dragon)
+    elif choice == '4':
+        dragon.cut_tail(2)
+        check_dragon(dragon)
+        check_game_over(dragon)
+    else:
+        print("Invalid option. Try again.")
+
+def player_action2(choice, dragon):
     if choice == '1':
         dragon.cut_head(1)
         check_dragon(dragon)
