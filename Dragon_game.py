@@ -48,6 +48,11 @@ def show_rules():
     for item in file:
         print(item)
 
+def show_combatRules():
+    """Show the rules to the player"""
+    file = open("CombatRules.txt","r")
+    for item in file:
+        print(item)
 
 def mostrar_regras():
     """Show the rules to the player in Portuguese"""
@@ -67,7 +72,7 @@ def check_game_over(dragon):
     if dragon.heads > 1 or dragon.tails >= 1:
         print("Lucky, you are STILL alive, but not for long...")
     elif dragon.heads is 1 and dragon.tails is 0:
-        print("Too bad. You never the last head of the dragon devouring you after burning you whole. Try again!")
+        print("Too bad. You never saw the last head of the dragon devouring you after burning you whole. Try again!")
     else: # if the dragon has no heads or tails
         print("Congratulations, you have just killed the dragon! Now you can celebrate all night with your village!")
         global running
@@ -75,6 +80,9 @@ def check_game_over(dragon):
 
 
 def player_action(choice, dragon):
+
+    show_combatRules()
+    
     if choice == '1':
         dragon.cut_head(1)
         check_dragon(dragon)
