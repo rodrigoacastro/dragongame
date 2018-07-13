@@ -1,6 +1,6 @@
 # Dragongame
 
-from dragongame_classes_instances import *
+#from dragongame_classes_instances import *
 from dragongame_main_functions import *
 
 
