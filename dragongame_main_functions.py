@@ -23,17 +23,17 @@ def check_dragon(dragon):
     print("\nThe dragon has %i heads." %dragon.heads)
     print("The dragon has %i tails.\n" %dragon.tails)
 
-
 def check_game_over(dragon):
+    global running
     """Check if number of heads is 1 (if so, it is game over)"""
-    if dragon.heads > 1 or dragon.tails >= 1:
-        print("Lucky, you are STILL alive, but not for long...")
-    elif dragon.heads == 1 and dragon.tails == 0:
-        print("Too bad. You never the last head of the dragon devouring you after burning you whole. Try again!")
-    else: # if the dragon has no heads or tails
-        print("Congratulations, you have just killed the dragon! Now you can celebrate all night with your village!")
-        global running
+    if dragon.heads == 1 and dragon.tails == 0:
+        print("Too bad. You never saw the last head of the dragon devouring you after burning you whole. Try again!")
         running = False
+    elif dragon.heads == 0 and dragon.tails == 0: # if the dragon has no heads or tails
+        print("Congratulations, you have just killed the dragon! Now you can celebrate all night with your village!")
+        running = False
+    else:
+        print("Lucky, you are STILL alive, but not for long...")
 
 def createNewPlayer ():
     
@@ -46,13 +46,48 @@ def createNewPlayer ():
         # Which name will take you to Glory (or to the Heavens)?
         playerName = input("Which name will take you to Glory (or to the Heavens)?")
         # Which weapon will hurt others (but mainly you)?
-        playerWeapon = input("Which weapon will hurt others (but mainly you)?")
+        print("Which weapon will hurt others (but mainly you)?")
+        print("These are the weapons available:")
+        weaponList = ["Short Sword","Sword", "Bow and Arrow", "Mace", "Wand", "Staff","Boomerang","Deadly Lipstick"]
+
+        number = 0
+
+        for item in weaponList:
+            number +=1
+            print (number,")", item)
+
+        weapon_number = input("Which weapon will you choose?")
+
+        playerWeapon = weaponList[int(weapon_number)-1]
+
         # Which place have you been born into?
         playerHome = input("Which place have you been born into?")
+
         # Which recipient allows you carry so much junk, ops, luggage?
-        playerBag = input("Which recipient allows you carry so much junk, ops, luggage?")
+        print("Which recipient allows you carry so much junk, ops, luggage?")
+
+        print("These are the recipients available:")
+        recipientList = ["Bag","Handbag","Rucksack","Purse","Pocket"]
+
+        number = 0
+
+        for item in recipientList:
+            number += 1
+            print(number, ")", item)
+
+        recipient_number = input("Which recipient will you choose?")
+
+        playerBag = recipientList[int(recipient_number)-1]
+
         # Are you a future lord or future lady?
         playerGender = input("Are you a future lord or future lady?")
+        gender = ["Lord","Lady"]
+        print ("Type 1 (Lord) or 2 (Lady) to choose.")
+
+        if choice == '1':
+            playerGender = gender[0]
+        elif choice == '2':
+            playerGender = gender[1]
 
         newPlayer = Player(playerName,playerWeapon,playerHome,playerBag,playerGender)
 
@@ -100,6 +135,8 @@ def chooseOpponent():
     # produces dictionaries with dragons' lives info
     dragon_lives = collections.OrderedDict(zip(allDragonNames, dragon_status)) # keys, values
 
+    del dragon_status
+
     # print dict of dragon names and lives
     for key, value in dragon_lives.items() :
         print (key, value)
@@ -137,26 +174,6 @@ def chooseOpponent():
     
     
 def player_action(choice, dragon):
-    if choice == '1':
-        dragon.cut_head(1)
-        check_dragon(dragon)
-        check_game_over(dragon)
-    elif choice == '2':
-        dragon.cut_head(2)
-        check_dragon(dragon)
-        check_game_over(dragon)
-    elif choice == '3':
-        dragon.cut_tail(1)
-        check_dragon(dragon)
-        check_game_over(dragon)
-    elif choice == '4':
-        dragon.cut_tail(2)
-        check_dragon(dragon)
-        check_game_over(dragon)
-    else:
-        print("Invalid option. Try again.")
-
-def player_action2(choice, dragon):
     if choice == '1':
         dragon.cut_head(1)
         check_dragon(dragon)

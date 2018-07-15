@@ -25,7 +25,6 @@ running = True
 
 
 print("Welcome to Dragongame")
-check_dragon(drag)
 print("Your objective is to kill the evil dragon, before he kills you and your whole village, Riverville\n")
 
 show_rules()
@@ -36,7 +35,9 @@ print("\nWhat will you do?")
 newPlayer = createNewPlayer()
 opponent = chooseOpponent()
 
+check_dragon(opponent)
+
 # Main loop
 while running:
     action = input("Type 1 to 4 to select an option: ")
-player_action(action, drag)
+    player_action(action, opponent)

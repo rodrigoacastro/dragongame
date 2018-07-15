@@ -71,7 +71,7 @@ BravePrincess = Player("Zelda", "Short sword", "Small village", "Rucksack", "mal
 FashionHero = Player("Susie", "Deadly lipstick", "Hollywood", "Handbag", "female")
 YoungCharlatan = Player("Lockheart", "Wand", "Big city", "Rucksack", "male")
 PreyingPriest = Player("John", "Staff", "Royal capital", "Bag", "male")
-BoldCoward =  Player("Aussie", "Boomerang", "Scorching desert", "Rucksack", "female")
+BoldCoward = Player("Aussie", "Boomerang", "Scorching desert", "Rucksack", "female")
         
         
 # new Dragons:
@@ -98,3 +98,4 @@ allDragons = [easyDragon1,easyDragon2,mediumDragon1,mediumDragon2,hardDragon1,ha
 status = ["alive","alive","alive","alive","alive","alive","alive","alive"]
     
 dragon_lives = dict(zip(allDragons, status)) # keys, values
+del(status)
