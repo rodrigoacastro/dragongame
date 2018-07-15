@@ -68,20 +68,23 @@ def check_dragon(dragon):
 
 
 def check_game_over(dragon):
+    global running
     """Check if number of heads is 1 (if so, it is game over)"""
-    if dragon.heads > 1 or dragon.tails >= 1:
-        print("Lucky, you are STILL alive, but not for long...")
-    elif dragon.heads is 1 and dragon.tails is 0:
+    if dragon.heads == 1 and dragon.tails == 0:
         print("Too bad. You never saw the last head of the dragon devouring you after burning you whole. Try again!")
-    else: # if the dragon has no heads or tails
-        print("Congratulations, you have just killed the dragon! Now you can celebrate all night with your village!")
-        global running
         running = False
+    elif dragon.heads == 0 and dragon.tails == 0: # if the dragon has no heads or tails
+        print("Congratulations, you have just killed the dragon! Now you can celebrate all night with your village!")
+        running = False
+    else:
+        print("Lucky, you are STILL alive, but not for long...")
+
 
 
 def player_action(choice, dragon):
 
     show_combatRules()
+    #print ("type quit to leave game")
     
     if choice == '1':
         dragon.cut_head(1)
@@ -99,6 +102,8 @@ def player_action(choice, dragon):
         dragon.cut_tail(2)
         check_dragon(dragon)
         check_game_over(dragon)
+    #elif choice == 'quit':
+     #   return ("Thanks for playing! =)")
     else:
         print("Invalid option. Try again.")
 
