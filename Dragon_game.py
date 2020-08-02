@@ -14,7 +14,7 @@ class Dragon:
             print("\nImpossible to cut an ethereal head, try something else.")
             return False
         elif dmg >= self.heads:
-            dmg == self.heads
+            dmg = self.heads
 
         if dmg == 1:
             print("\nOne head was cut, but another grew in its place")
@@ -30,7 +30,7 @@ class Dragon:
             print("\nImpossible to cut an ethereal tail, try something else.")
             return False
         elif dmg >= self.tails:
-            dmg == self.tails
+            dmg = self.tails
 
         if dmg == 1:
             self.tails += 1
