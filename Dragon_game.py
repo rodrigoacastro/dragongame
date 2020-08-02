@@ -6,10 +6,10 @@ class Dragon:
         self.tails = tails
 
     def cut_head(self, dmg):
-        """Removes x heads from the hydra.
+        """Removes x heads from the dragon.
         If 1 was removed, grow another one.
         If 2 were removed, grow nothing back."""
-        # Check to see if the hydra still has heads.
+        # Check to see if the dragon still has heads.
         if self.heads <= 0:
             print("\nImpossible to cut an ethereal head, try something else.")
             return False
@@ -23,7 +23,7 @@ class Dragon:
             print("\n2 heads were cut, and nothing bad happened. What a relief!")
 
     def cut_tail(self, dmg):
-        """Removes x tails from the hydra.
+        """Removes x tails from the dragon.
         If 1 was removed, 2 grow back.
         If 2 were removed, 1 head grows back."""
         if self.tails <= 0:
