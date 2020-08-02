@@ -124,5 +124,5 @@ print("\nWhat will you do?")
 
 # Main loop
 while running:
-    action = input("Type 1 to 4 to select an option: ")
+    action = input("Type 1, 2, 3 or 4 to select an option: ")
     player_action(action, drag)
