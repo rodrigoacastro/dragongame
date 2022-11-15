@@ -1,0 +1,8 @@
+
+Combat Rules: 
+
+1) If you cut 1 head, one grows (back).
+2) If you cut 2 heads, no head or tail grows back.
+3) If you cut 1 tail, 2 tails grow back.
+4) If you cut 2 tails, 1 head grows back.
+5) If only 1 head remains, the player loses and is devoured by the dragon.
