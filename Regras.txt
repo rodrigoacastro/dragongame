@@ -1,0 +1,9 @@
+Regras:
+
+O dragão inicia com 3 cabeças e 3 caudas.
+
+1) Se cortar 1 cabeca, nasce 1 (outra).
+2) Se cortar 2 cabecas, nao nasce nem cabeca nem cauda.
+3) Se cortar 1 cauda, nascem 2 caudas no lugar.
+4) Se cortar duas caudas, nasce 1 cabeca.
+5) Se sobrar apenas a cabeca, o jogador perde.
