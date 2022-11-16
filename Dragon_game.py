@@ -74,7 +74,7 @@ def check_game_over(dragon):
         print("Too bad. You never saw the last head of the dragon devouring you after burning you whole. Try again!")
         running = False
     elif dragon.heads == 0 and dragon.tails == 0: # if the dragon has no heads or tails
-        print("Congratulations, you have just killed the dragon! Now you can celebrate all night with your village!")
+        print("Congratulations, you have just killed the evil dragon! Now you can celebrate all night with your village!")
         running = False
     else:
         print("Lucky, you are STILL alive, but not for long...")
@@ -85,7 +85,9 @@ def player_action(choice, dragon):
 
     show_combatRules()
     #print ("type quit to leave game")
-    
+
+    print("To (try to) kill the evil dragon you can: \n1) cut 1 head; \n2) cut 2 heads; \n3) cut 1 tail; \n4) cut 2 tails.")
+
     if choice == '1':
         dragon.cut_head(1)
         check_dragon(dragon)
@@ -111,18 +113,19 @@ def player_action(choice, dragon):
 # Initialization
 running = True
 
-drag = Dragon(heads=3,tails=3)
+dragon = Dragon(heads=3,tails=3)
 
 print("Welcome to Dragongame")
-check_dragon(drag)
+check_dragon(dragon)
 print("Your objective is to kill the evil dragon, before he kills you and your whole village, Riverville\n")
 
 show_rules()
 
-print("To (try to) kill the evil dragon you can: \n1) cut 1 head; \n2) cut 2 heads; \n3) cut 1 tail; \n4) cut 2 tails.")
+# print("To (try to) kill the evil dragon you can: \n1) cut 1 head; \n2) cut 2 heads; \n3) cut 1 tail; \n4) cut 2 tails.")
 print("\nWhat will you do?")
 
 # Main loop
 while running:
+    print("To (try to) kill the evil dragon you can: \n1) cut 1 head; \n2) cut 2 heads; \n3) cut 1 tail; \n4) cut 2 tails.\n")
     action = input("Type 1, 2, 3 or 4 to select an option: ")
-    player_action(action, drag)
+    player_action(action, dragon)
